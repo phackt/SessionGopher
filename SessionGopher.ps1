@@ -480,7 +480,7 @@ function ProcessThoroughLocal($AllDrives) {
   foreach ($Drive in $AllDrives) {
     # If the drive holds a filesystem
     if ($Drive.Provider.Name -eq "FileSystem") {
-      $Dirs = Get-ChildItem $Drive.Root -Recurse -ErrorAction SilentlyContinue
+      $Dirs = Get-ChildItem $Drive.Root -Force -Recurse -ErrorAction SilentlyContinue
       foreach ($Dir in $Dirs) {
         Switch ($Dir.Extension) {
           ".ppk" {[void]$PPKExtensionFilesINodes.Add($Dir)}
